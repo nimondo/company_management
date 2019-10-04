@@ -1,0 +1,4 @@
+services:
+#    tg_manage.example:
+#        class: TG\ManageBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

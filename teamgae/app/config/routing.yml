@@ -1,0 +1,11 @@
+manage:
+    resource: "@TGManageBundle/Controller/ManageController.php"
+    type:   rest
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+security:
+    resource: "@TGManageBundle/Controller/SecurityController.php"
+    type:   rest

@@ -1,0 +1,9 @@
+tg_manage_homepage:
+    path:     /
+    defaults: 
+        _controller: TGManageBundle:Default:index 
+
+tg_entreprise_add:
+    path:     /entreprises
+    defaults:
+        _controller: TGManageBundle:Manage:postEntreprises

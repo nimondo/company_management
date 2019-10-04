@@ -1,0 +1,60 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/teamgaeweb/dist
+/teamgaeweb/tmp
+/teamgaeweb/out-tsc
+# Only exists if Bazel was run
+/teamgaeweb/bazel-out
+
+# dependencies
+/teamgaeweb/node_modules
+
+# profiling files
+/teamgaewebchrome-profiler-events.json
+/teamgaewebspeed-measure-plugin.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/teamgaeweb/.sass-cache
+/teamgaeweb/connect.lock
+/teamgaeweb/coverage
+/teamgaeweb/libpeerconnection.log
+/teamgaewebnpm-debug.log
+/teamgaewebyarn-error.log
+/teamgaewebtestem.log
+/teamgaeweb/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Symfony Vendor
+/teamgae/vendor
+/teamgae/var/*
+!teamgae/var/cache
+/teamgae/var/cache/*
+!teamgae/var/cache/.gitkeep
+!teamgae/var/logs
+/teamgae/var/logs/*
+!teamgae/var/logs/.gitkeep
+!teamgae/var/sessions
+/teamgae/var/sessions/*
+!teamgae/var/sessions/.gitkeep
+!teamgae/var/SymfonyRequirements.php
