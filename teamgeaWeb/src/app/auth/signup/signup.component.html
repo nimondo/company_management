@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-sm-10">
+    <h2>Créer un manager</h2>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="email">Nom</label>
+            <input [ngClass]="{'form-control': true,
+            'is-invalid': signupForm.controls['name'].errors && !signupForm.controls['name'].pristine,
+            'is-valid': !signupForm.controls['name'].errors && (!signupForm.controls['name'].pristine ||!signupForm.controls['name'].touched)}" 
+            type="text"
+                    id="name"
+                    class="form-control"
+                    formControlName="name">
+          <div *ngIf="signupForm.controls['name'].errors && !signupForm.controls['name'].pristine"
+                    class="invalid-feedback small_font">
+              <p [hidden]="!signupForm.controls['name'].errors.required">Nom est requis.</p>
+              <p [hidden]="!signupForm.controls['name'].errors.pattern">Le nom est invalide.</p>
+          </div>
+        
+    </div>
+      <div class="form-group">
+              <label for="email">Username</label>
+              <input [ngClass]="{'form-control': true,
+              'is-invalid': signupForm.controls['username'].errors && !signupForm.controls['username'].pristine,
+              'is-valid': !signupForm.controls['username'].errors && (!signupForm.controls['username'].pristine ||!signupForm.controls['username'].touched)}" 
+              type="text"
+                      id="username"
+                      class="form-control"
+                      formControlName="username">
+              <div *ngIf="signupForm.controls['username'].errors && !signupForm.controls['username'].pristine"
+                      class="invalid-feedback small_font">
+                      <p [hidden]="!signupForm.controls['username'].errors.required">L'username est requis et unique.</p>
+                      <p [hidden]="!signupForm.controls['username'].errors.pattern">L'username est invalide 3 caractères minimum.</p>
+                    </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Adresse mail</label>
+        <input [ngClass]="{'form-control': true,
+        'is-invalid': signupForm.controls['email'].errors && !signupForm.controls['email'].pristine,
+        'is-valid': !signupForm.controls['email'].errors && (!signupForm.controls['email'].pristine ||!signupForm.controls['email'].touched)}" 
+         type="text"
+               id="email"
+               class="form-control"
+               formControlName="email">
+        <div *ngIf="signupForm.controls['email'].errors && !signupForm.controls['email'].pristine"
+               class="invalid-feedback small_font">
+               <p [hidden]="!signupForm.controls['email'].errors.required">Email est requis.</p>
+               <p [hidden]="!signupForm.controls['email'].errors.pattern">L'email est invalide.</p>
+             </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input [ngClass]="{'form-control': true,
+        'is-invalid': signupForm.controls['password'].errors && !signupForm.controls['password'].pristine,
+        'is-valid': !signupForm.controls['password'].errors && !signupForm.controls['password'].pristine}"
+        type="password"
+               id="password"
+               class="form-control"
+               formControlName="password">
+               <div class="invalid-feedback small_font"
+               *ngIf="signupForm.controls['password'].errors && !signupForm.controls['password'].pristine">
+               <p
+                 [ngClass]="signupForm.controls['password'].hasError('required') || signupForm.controls['password'].hasError('minlength')  ? 'text-danger' : 'text-success'">
+                 8 caractères au moins!
+               </p> <br>
+               <p
+                 [ngClass]="signupForm.controls['password'].hasError('required') || signupForm.controls['password'].hasError('hasNumber')  ? 'text-danger' : 'text-success'">
+                 Doit contenir un nombre!
+               </p> <br>
+               <p
+                 [ngClass]="signupForm.controls['password'].hasError('required') || signupForm.controls['password'].hasError('hasCapitalCase')  ? 'text-danger' : 'text-success'">
+                 Doit contenir une majuscule!
+               </p> <br>
+               <p
+                 [ngClass]="signupForm.controls['password'].hasError('required') || signupForm.controls['password'].hasError('hasSmallCase')  ? 'text-danger' : 'text-success'">
+                 Des minuscules!
+               </p> <br>
+               <p
+                 [ngClass]="signupForm.controls['password'].hasError('required') || signupForm.controls['password'].hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
+                 Doit contenir un caractère spécial!
+               </p>
+             </div>
+      </div>
+      <button class="btn btn-primary"
+              type="submit"
+              [disabled]="signupForm.invalid">Créer mon compte</button>
+    </form>
+    <p class="text-danger">{{ errorMessage }}</p>
+  </div>
+</div>

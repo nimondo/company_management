@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-sm-10">
+      <h2>Modifier mon compte</h2>
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+              <label for="email">Nom</label>
+              <input [ngClass]="{'form-control': true,
+              'is-invalid': signupForm.controls['name'].errors && !signupForm.controls['name'].pristine,
+              'is-valid': !signupForm.controls['name'].errors && (!signupForm.controls['name'].pristine ||!signupForm.controls['name'].touched)}" 
+              type="text"
+                      id="name"
+                      class="form-control"
+                      formControlName="name">
+            <div *ngIf="signupForm.controls['name'].errors && !signupForm.controls['name'].pristine"
+                      class="invalid-feedback small_font">
+                <p [hidden]="!signupForm.controls['name'].errors.required">Nom est requis.</p>
+                <p [hidden]="!signupForm.controls['name'].errors.pattern">Le nom est invalide.</p>
+            </div>
+          
+      </div>
+        
+        <div class="form-group">
+          <label for="email">Adresse mail</label>
+          <input [ngClass]="{'form-control': true,
+          'is-invalid': signupForm.controls['email'].errors && !signupForm.controls['email'].pristine,
+          'is-valid': !signupForm.controls['email'].errors && (!signupForm.controls['email'].pristine ||!signupForm.controls['email'].touched)}" 
+           type="text"
+                 id="email"
+                 class="form-control"
+                 formControlName="email">
+          <div *ngIf="signupForm.controls['email'].errors && !signupForm.controls['email'].pristine"
+                 class="invalid-feedback small_font">
+                 <p [hidden]="!signupForm.controls['email'].errors.required">Email est requis.</p>
+                 <p [hidden]="!signupForm.controls['email'].errors.pattern">L'email est invalide.</p>
+               </div>
+        </div>
+  
+        
+        <button class="btn btn-primary"
+                type="submit"
+                [disabled]="signupForm.invalid">Modifier</button>
+      </form>
+      <p class="text-danger">{{ errorMessage }}</p>
+    </div>
+  </div>
+  

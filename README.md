@@ -1,4 +1,4 @@
-# code challenge  zangui
+# code challenge 
 
 ## Le test consiste à créer une interface d’administration pour gérer les entreprises et leurs employés.
 #### 1- La table de la base de données des sociétés comprend les champs suivants : Nom (obligatoire), email, logo (minimum 100 × 100), site Web.
@@ -69,7 +69,7 @@ Run the server
 
 ### Install Nodejs
 
-**Nodejs cmd or other:** cd into teamgaeweb directory. use npm install command to install the angular depencies and then use ng serve command to run the server.
+**Nodejs cmd or other:** cd into teamgaeWeb directory. use npm install command to install the angular depencies and then use ng serve command to run the server.
 
 ## Instructions
 

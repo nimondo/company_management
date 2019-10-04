@@ -1,0 +1,46 @@
+<button class="btn btn-primary" (click)="addEntreprise()">Ajouter une entreprise</button>
+<div class="entreprise_admin offset-1 col-sm-10 col-10 col-md-10">
+  <h4 class="text-center titre_entreprise">Les entreprises</h4>
+ <div class="row">
+    <div [className]=" notFull ? 'table-responsive-md table-responsive-sm col-md-10  col-sm-12 col-lg-6' :'table-responsive-md table-responsive-sm col-md-10  col-sm-9 col-lg-10'">
+      <table class="table table-hover thead-dark table-stripped" *ngIf="entreprises">
+        <thead  class="thead-dark">
+          <tr class="head">
+            <th>Logo</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let entreprise of entreprises| paginate: { itemsPerPage:iPP , currentPage: p }; let i = index">
+          <tr (click)="onViewEntreprise(entreprise.id)">
+            <td class="name-entreprise"><img style="width:30px;height: 30px;" *ngIf="entreprise.logo" src="http://teamgae/web/uploads/logo/{{ entreprise.logo}}"></td>
+            <td class="name-entreprise">{{ entreprise.email }}</td>
+            <td class="name-entreprise">{{ entreprise.siteWeb  }}</td>
+            <td class="name-entreprise"><button class="btn btn-sm btn-primary"(click)="onViewEntreprise(entreprise.id)">Gérer</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+      <div class="col-12 table_foot row input-sm d-flex p-2"
+          [className]="notFull ? 'col-md-8 mr-md-5' : 'row'">
+          <select
+              [className]="notFull ? 'd-none' : 'd-block custom-select'"
+              class="custom-select" style="width: auto" [(ngModel)]="iPP">
+              <option [ngValue]="5">5 par pages</option>
+              <option [ngValue]="10">10 par pages</option>
+              <option [ngValue]="15">15 par pages</option>
+              <option [ngValue]="20">20 par pages</option>
+              <option [ngValue]="50">50 par pages</option>
+          </select>
+      <pagination-controls (pageChange)="p = $event"
+                    autoHide="false"
+                    responsive="false"
+                    previousLabel="&#8592;"
+                    nextLabel="&#8594;"
+                    >
+      </pagination-controls> 
+    </div>
+</div>
+
+</div>

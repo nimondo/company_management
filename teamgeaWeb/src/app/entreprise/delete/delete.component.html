@@ -1,0 +1,6 @@
+<div class="row">
+    <div class="offset-1 col-10">
+      Etes-vous sûr de supprimer cette entreprise: <strong>{{ entreprise?.nom}}</strong>?
+      <button class="btn btn-danger" (click)="onDestroy(entreprise?.id)">Supprimer</button>
+      <button class="btn btn-primary" (click)="onCancel(entreprise?.id)">Annuler</button>
+</div>

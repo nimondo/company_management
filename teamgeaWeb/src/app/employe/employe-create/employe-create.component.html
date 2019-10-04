@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col-sm-10">
+      <h2>{{employe ? 'Modifier un' : 'Ajouter un nouvel'}}  employe</h2>
+      <form [formGroup]="employeForm" (ngSubmit)="employe ? updateEmploye(employeForm.value) :onSaveBlog()" >
+        <div class="form-group">
+          <label for="title">Nom</label>
+          <input [ngClass]="{'form-control': true,
+          'is-invalid': employeForm.controls['nom'].errors && !employeForm.controls['nom'].pristine,
+          'is-valid': !employeForm.controls['nom'].errors && (!employeForm.controls['nom'].pristine ||!employeForm.controls['nom'].touched)}"  
+          type="text" id="title"
+                 class="form-control" [value]="employe? employe.nom : ''" formControlName="nom">
+               <div *ngIf="employeForm.controls['nom'].errors && !employeForm.controls['nom'].pristine"
+                 class="invalid-feedback small_font">
+           <p [hidden]="!employeForm.controls['nom'].errors.required">Nom est requis.</p>
+           <p [hidden]="!employeForm.controls['nom'].errors.pattern">Le nom est invalide,3 caractères minimum.</p>
+          </div>
+        </div>
+        <div class="form-group">
+            <label for="title">Prénom</label>
+            <input [ngClass]="{'form-control': true,
+            'is-invalid': employeForm.controls['prenom'].errors && !employeForm.controls['prenom'].pristine,
+            'is-valid': !employeForm.controls['prenom'].errors && (!employeForm.controls['prenom'].pristine ||!employeForm.controls['prenom'].touched)}"  
+            type="text" id="title"
+                   class="form-control" [value]="employe? employe.prenom : ''" formControlName="prenom">
+                 <div *ngIf="employeForm.controls['prenom'].errors && !employeForm.controls['prenom'].pristine"
+                   class="invalid-feedback small_font">
+             <p [hidden]="!employeForm.controls['prenom'].errors.required">Le prénom est requis.</p>
+             <p [hidden]="!employeForm.controls['prenom'].errors.pattern">Le nom est invalide,3 caractères minimum.</p>
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="title">Téléphone</label>
+              <input [ngClass]="{'form-control': true,
+              'is-invalid': employeForm.controls['telephone'].errors && !employeForm.controls['telephone'].pristine,
+              'is-valid': !employeForm.controls['telephone'].errors && (!employeForm.controls['telephone'].pristine ||!employeForm.controls['telephone'].touched)}"  
+              type="tel" id="title"
+                     class="form-control" [value]="employe? employe.telephone : ''" formControlName="telephone">
+                   <div *ngIf="employeForm.controls['telephone'].errors && !employeForm.controls['telephone'].pristine"
+                     class="invalid-feedback small_font">
+               <p [hidden]="!employeForm.controls['telephone'].errors.pattern">Le numero est invalide,8 chiffres.</p>
+              </div>
+            </div>
+        <div class="form-group">
+          <label for="author">Email</label>
+          <input [ngClass]="{'form-control': true,
+          'is-invalid': employeForm.controls['email'].errors && !employeForm.controls['email'].pristine,
+          'is-valid': !employeForm.controls['email'].errors && (!employeForm.controls['email'].pristine ||!employeForm.controls['email'].touched)}" 
+          type="email" id="author"
+          [value]="employe? employe.email : ''" class="form-control" formControlName="email">
+          <div *ngIf="employeForm.controls['email'].errors && !employeForm.controls['email'].pristine"
+                 class="invalid-feedback small_font">
+                 <p [hidden]="!employeForm.controls['email'].errors.pattern">L'email est invalide.</p>
+               </div>
+        </div>
+        <div class="form-group">
+            <label for="author">Entreprise</label>
+            <ng-select class="custom"
+            [items]="entreprises"
+            bindLabel="nom"
+            [searchable]="true" 
+            bindValue="entreprise"
+            (change)="getSelectedValue($event)"
+            formControlName="entreprise_id">
+          </ng-select>
+        </div>
+        <button class="btn btn-success" [disabled]="employeForm.invalid "
+              type="submit">Enregistrer
+            </button>
+      </form><br>
+      <button class="btn btn-default" (click)="onBack()">Retour</button>
+    </div>
+  </div>
+  

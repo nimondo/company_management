@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-sm-10">
+    <h2>{{entreprise ? 'Modifier une' : 'Ajouter une nouvelle'}}  entreprise</h2>
+    <form [formGroup]="entrepriseForm" (ngSubmit)="entreprise ? updateEntreprise(entrepriseForm.value) :onSaveBlog()" >
+      <div class="form-group">
+        <label for="title">Nom</label>
+        <input [ngClass]="{'form-control': true,
+        'is-invalid': entrepriseForm.controls['nom'].errors && !entrepriseForm.controls['nom'].pristine,
+        'is-valid': !entrepriseForm.controls['nom'].errors && (!entrepriseForm.controls['nom'].pristine ||!entrepriseForm.controls['nom'].touched)}"  
+        type="text" id="title"
+               class="form-control" [value]="entreprise? entreprise.nom : ''" formControlName="nom">
+             <div *ngIf="entrepriseForm.controls['nom'].errors && !entrepriseForm.controls['nom'].pristine"
+               class="invalid-feedback small_font">
+         <p [hidden]="!entrepriseForm.controls['nom'].errors.required">Nom est requis.</p>
+         <p [hidden]="!entrepriseForm.controls['nom'].errors.pattern">Le nom est invalide,3 caractères minimum.</p>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="author">Email</label>
+        <input [ngClass]="{'form-control': true,
+        'is-invalid': entrepriseForm.controls['email'].errors && !entrepriseForm.controls['email'].pristine,
+        'is-valid': !entrepriseForm.controls['email'].errors && (!entrepriseForm.controls['email'].pristine ||!entrepriseForm.controls['email'].touched)}" 
+        type="email" id="author"
+        [value]="entreprise? entreprise.email : ''" class="form-control" formControlName="email">
+        <div *ngIf="entrepriseForm.controls['email'].errors && !entrepriseForm.controls['email'].pristine"
+               class="invalid-feedback small_font">
+               <p [hidden]="!entrepriseForm.controls['email'].errors.pattern">L'email est invalide.</p>
+             </div>
+      </div>
+      <div class="form-group">
+        <label for="contenu">Site Web</label>
+        <input 
+        [ngClass]="{'form-control': true,
+            'is-invalid': entrepriseForm.controls['siteWeb'].errors && !entrepriseForm.controls['siteWeb'].pristine,
+            'is-valid': !entrepriseForm.controls['siteWeb'].errors && (!entrepriseForm.controls['siteWeb'].pristine ||!entrepriseForm.controls['siteWeb'].touched)}" 
+            id="contenu"
+            [value]="entreprise? entreprise.siteWeb : ''" class="form-control" formControlName="siteWeb">
+                  <div *ngIf="entrepriseForm.controls['siteWeb'].errors && !entrepriseForm.controls['siteWeb'].pristine"
+                  class="invalid-feedback small_font">
+            <p [hidden]="!entrepriseForm.controls['siteWeb'].errors.pattern">L'url est invalide.</p>
+        </div>
+      </div>
+      <div class="form-group">
+          <h4>Ajouter un logo</h4>
+          <div class="row">
+            <div class="col-9">
+                <div class="form-label-group">
+                    <div class="custom-file">
+                    <input type="file" (change)="detectFiles($event)"
+                    class="custom-file-input" accept="image/*">
+                    <label class="custom-file-label" #labelImport for="importFile">Logo</label>
+                  </div>
+                  </div>
+            </div>
+            <div class="col-3">
+              <img *ngIf="url" src="{{url}}" class="responsive" width="50px"
+                            height="35px">
+              </div>
+          </div>
+          <p class="text-danger" *ngIf="errorFile">Mauvais format /seulement les images minimum 100x100</p>
+          <p class="text-success" *ngIf="fileUploaded">Fichier chargé !</p>
+      </div>
+      <button class="btn btn-success" [disabled]="entrepriseForm.invalid || fileIsUploading"
+            type="submit">Enregistrer
+          </button>
+    </form><br>
+    <button class="btn btn-default" (click)="onBack()">Retour</button>
+  </div>
+</div>
