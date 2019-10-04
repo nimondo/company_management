@@ -1,4 +1,4 @@
-# code challenge
+# code challenge  zangui
 
 ## Le test consiste à créer une interface d’administration pour gérer les entreprises et leurs employés.
 #### 1- La table de la base de données des sociétés comprend les champs suivants : Nom (obligatoire), email, logo (minimum 100 × 100), site Web.
